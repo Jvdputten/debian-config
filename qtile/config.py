@@ -4,7 +4,7 @@ from libqtile import layout, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-from colors import nord_fox
+from colors import onedark
 
 # from bar1 import bar
 from bar1 import bar
@@ -23,10 +23,38 @@ def run_powermenu(qtile):
     subprocess.call([script_path])
 
 
+def window_to_previous_screen(qtile, switch_group=False, switch_screen=False):
+    i = qtile.screens.index(qtile.current_screen)
+    if i != 0:
+        group = qtile.screens[i - 1].group.name
+        qtile.current_window.togroup(group, switch_group=switch_group)
+        if switch_screen:
+            qtile.cmd_to_screen(i - 1)
+
+
+def window_to_next_screen(qtile, switch_group=False, switch_screen=False):
+    i = qtile.screens.index(qtile.current_screen)
+    if i + 1 != len(qtile.screens):
+        group = qtile.screens[i + 1].group.name
+        qtile.current_window.togroup(group, switch_group=switch_group)
+        if switch_screen:
+            qtile.cmd_to_screen(i + 1)
+
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Launch browser
+    Key(
+        [mod, "shift"],
+        "comma",
+        lazy.function(window_to_next_screen, switch_screen=True),
+    ),
+    Key(
+        [mod, "shift"],
+        "period",
+        lazy.function(window_to_previous_screen, switch_screen=True),
+    ),
     Key([mod], "g", lazy.spawn("google-chrome"), desc="Launch browser"),
     Key(
         [mod],
@@ -149,26 +177,26 @@ for i in groups:
 
 layouts = [
     layout.MonadTall(
-        border_normal=nord_fox["black"],
-        border_focus=nord_fox["cyan"],
+        border_normal=onedark["black"],
+        border_focus=onedark["cyan"],
         margin=10,
         border_width=2,
         single_border_width=2,
         single_margin=10,
     ),
     layout.Max(
-        border_normal=nord_fox["black"],
-        border_focus=nord_fox["cyan"],
+        border_normal=onedark["black"],
+        border_focus=onedark["cyan"],
         border_width=2,
         num_stacks=1,
         margin=10,
     ),
     layout.Columns(
-        border_normal=nord_fox["black"],
-        border_focus=nord_fox["cyan"],
+        border_normal=onedark["black"],
+        border_focus=onedark["cyan"],
         border_width=2,
-        border_normal_stack=nord_fox["black"],
-        border_focus_stack=nord_fox["cyan"],
+        border_normal_stack=onedark["black"],
+        border_focus_stack=onedark["cyan"],
         border_on_single=2,
         margin=8,
         margin_on_single=10,
@@ -176,8 +204,8 @@ layouts = [
 ]
 
 floating_layout = layout.Floating(
-    border_normal=nord_fox["bg"],
-    border_focus=nord_fox["cyan"],
+    border_normal=onedark["bg"],
+    border_focus=onedark["cyan"],
     border_width=2,
     float_rules=[
         *layout.Floating.default_float_rules,
@@ -195,7 +223,7 @@ widget_defaults = dict(
     font="SauceCodePro Nerd Font Mono",
     fontsize=13,
     padding=10,
-    background=nord_fox["bg"],
+    background=onedark["bg"],
 )
 
 extension_defaults = widget_defaults.copy()
