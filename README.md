@@ -26,7 +26,7 @@ sudo apt install git
  cd Scripts
  ```
 
-2. clone this repo
+3. clone this repo
 ```bash
 git clone https://github.com/Jvdputten/debian-config
 ```
