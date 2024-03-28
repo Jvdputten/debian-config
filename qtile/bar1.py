@@ -11,7 +11,7 @@ from libqtile.widget.windowname import WindowName
 from libqtile.widget.quick_exit import QuickExit
 
 from unicodes import left_half_circle, right_arrow, right_half_circle
-from colors import nord_fox
+from colors import onedark
 
 BAR_HEIGHT = 28
 # BAR_MARGIN = 5
@@ -20,57 +20,48 @@ bar = Bar(
     [
         GroupBox(
             disable_drag=True,
-            active=nord_fox["magenta"],
-            inactive=nord_fox["black"],
-            highlight_method="line",
-            block_highlight_text_color=nord_fox["fg_gutter"],
-            borderwidth=1,
-            highlight_color=nord_fox["bg"],
-            background=nord_fox["bg"],
-            # spacing=2
+            active=onedark["fg"],
+            inactive=onedark["bg_highlight"],
+            highlight_method="border",
+            block_highlight_text_color=onedark["blue"],
+            borderwidth=2,
+            background=onedark["bg"],
+            spacing=2,
         ),
-        left_half_circle(nord_fox["red"], nord_fox["bg"]),
+        left_half_circle(onedark["red"], onedark["bg"]),
         CurrentLayout(
-            background=nord_fox["red"],
-            foreground=nord_fox["white"],
+            background=onedark["red"],
+            foreground=onedark["black"],
             margin=10,
         ),
-        right_arrow(nord_fox["fg_gutter"], nord_fox["red"]),
+        right_arrow(onedark["fg_gutter"], onedark["red"]),
         WindowCount(
-            text_format="缾 {num}",
-            background=nord_fox["fg_gutter"],
-            foreground=nord_fox["white"],
+            text_format="\uf2d2 {num}",
+            background=onedark["fg_gutter"],
+            foreground=onedark["black"],
             show_zero=True,
         ),
-        right_half_circle(nord_fox["fg_gutter"], nord_fox["bg"]),
-        WindowName(background=nord_fox["bg"], foreground=nord_fox["fg"]),
-        left_half_circle(nord_fox["black"], nord_fox["bg"]),
+        right_half_circle(onedark["fg_gutter"], onedark["bg"]),
+        WindowName(background=onedark["bg"], foreground=onedark["fg"]),
+        left_half_circle(onedark["black"], onedark["bg"]),
         CPU(
             format=" {freq_current}GHz {load_percent}%",
-            background=nord_fox["black"],
-            foreground=nord_fox["pink"],
+            background=onedark["black"],
+            foreground=onedark["pink"],
         ),
         Memory(
             format=" {MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}",
-            background=nord_fox["black"],
-            foreground=nord_fox["cyan"],
+            background=onedark["black"],
+            foreground=onedark["cyan"],
         ),
-        Net(background=nord_fox["black"], foreground=nord_fox["green"]),
-        # # Battery(
-        # #     background=gruvbox['fg3'],
-        # #     format='{char} {percent:2.0%} {hour:d}:{min:02d}'
-        # # ),
-        left_half_circle(nord_fox["fg_gutter"], nord_fox["black"]),
-        Systray(background=nord_fox["fg_gutter"]),
-        right_half_circle(nord_fox["fg_gutter"], nord_fox["black"]),
+        Net(background=onedark["black"], foreground=onedark["green"]),
         Clock(
-            background=nord_fox["black"],
-            foreground=nord_fox["white"],
-            format=" %Y-%m-%d %a %I:%M %p",
+            background=onedark["black"],
+            foreground=onedark["white"],
+            format="\uf43a %Y-%m-%d %a %I:%M %p",
         ),
-        QuickExit(),
     ],
-    background=nord_fox["bg"],
+    background=onedark["bg"],
     size=BAR_HEIGHT,
     margin=8,
 )
