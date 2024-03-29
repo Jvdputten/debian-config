@@ -12,7 +12,8 @@ wget "$THEME" -P ~/.config/kitty/kitty-themes/themes
 cd ~/.config/kitty
 ln -s ./kitty-themes/themes/OneDark.conf ~/.config/kitty/theme.conf
 echo "include ./theme.conf" > kitty.conf
-sed -i '6s/.*/    "background": #222222"' ~/.config  kitty/kitty-themes/themes/OneDark.conf
+chmod +x ~/.config/kitty/kitty-themes/themes/OneDark.conf
+sed -i "6s/background.*/background #222222/" ~/.config/kitty/kitty-themes/themes/OneDark.conf
 
 echo "font_family FiraCode Nerd Font Mono" > font.conf
 
