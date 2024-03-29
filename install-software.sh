@@ -1,4 +1,4 @@
-sudo apt install zsh curl kitty &&
+sudo apt install zsh curl kitty rofi &&
 
 # make zsh default shell
 chsh -s $(which zsh)
@@ -20,9 +20,17 @@ echo "font_family FiraCode Nerd Font Mono" > font.conf
 
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash # install zoxide
 
-# install nerd font SourceCodePro
+# install nerd font FiraCode
 wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip\
 && cd ~/.local/share/fonts \
 && unzip FiraCode.zip \
 && rm FiraCode.zip \
 && fc-cache -fv
+
+# configure rofi
+cd ~/Downloads
+git clone --depth=1 https://github.com/adi1090x/rofi.git
+chmod +x rofi/setup.sh
+./rofi/setup.sh
+rm -r
+
