@@ -9,7 +9,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash # install zoxide
 
-
+# install nerd font SourceCodePro
 wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SourceCodePro.zip \
 && cd ~/.local/share/fonts \
 && unzip SourceCodePro.zip \
