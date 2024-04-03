@@ -19,9 +19,10 @@ echo "font_family FiraCode Nerd Font Mono" > font.conf
 
 
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash # install zoxide
+eval "$(zoxide init zsh)"
 
 # install nerd font FiraCode
-wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip\
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip \
 && cd ~/.local/share/fonts \
 && unzip FiraCode.zip \
 && rm FiraCode.zip \
