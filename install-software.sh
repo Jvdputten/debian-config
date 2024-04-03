@@ -1,4 +1,4 @@
-sudo apt install zsh curl kitty rofi &&
+sudo apt install zsh curl kitty rofi neofetch &&
 
 # make zsh default shell
 chsh -s $(which zsh)
